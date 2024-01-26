@@ -73,6 +73,14 @@ class CoachMaker {
   ///
   final Widget? closeIcon;
 
+  ///custom text style for next button
+  ///
+  final TextStyle? nextTextStyle;
+
+  ///custom text style for text steps
+  ///
+  final TextStyle? stepsTextStyle;
+
   /// show steps
   ///
   final bool showSteps;
@@ -91,6 +99,8 @@ class CoachMaker {
     this.closeIcon,
     this.showSteps = true,
     this.skip,
+    this.nextTextStyle,
+    this.stepsTextStyle,
     this.decoration,
     this.contentPadding,
     this.nextStep = CoachMakerControl.next,

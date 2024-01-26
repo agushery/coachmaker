@@ -12,6 +12,8 @@ class WidgetMain extends StatefulWidget {
   final Decoration? decoration;
   final EdgeInsets? contentPadding;
   final Widget? closeIcon;
+  final TextStyle? nextTextStyle;
+  final TextStyle? stepsTextStyle;
   final String steps;
   final bool showSteps;
 
@@ -28,6 +30,8 @@ class WidgetMain extends StatefulWidget {
     required this.w,
     required this.duration,
     required this.model,
+    this.nextTextStyle,
+    this.stepsTextStyle,
     this.steps = '',
     this.showSteps = true,
     this.closeIcon,
@@ -202,6 +206,8 @@ class _WidgetMainState extends State<WidgetMain> {
           closeIcon: widget.closeIcon,
           steps: widget.steps,
           showSteps: widget.showSteps,
+          nextTextStyle: widget.nextTextStyle,
+          stepsTextStyle: widget.stepsTextStyle,
           decoration: widget.decoration,
           contentPadding: widget.contentPadding,
           buttonOptions: widget.buttonOptions,

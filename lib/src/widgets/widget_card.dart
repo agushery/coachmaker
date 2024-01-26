@@ -14,6 +14,8 @@ class WidgetCard extends StatefulWidget {
   final Decoration? decoration;
   final Widget? closeIcon;
   final EdgeInsets? contentPadding;
+  final TextStyle? nextTextStyle;
+  final TextStyle? stepsTextStyle;
   final String steps;
   final bool showSteps;
   final Widget Function(Function? onSkip, Function onNext)? customNavigator;
@@ -30,6 +32,8 @@ class WidgetCard extends StatefulWidget {
     this.steps = '',
     this.showSteps = true,
     this.closeIcon,
+    this.nextTextStyle,
+    this.stepsTextStyle,
     this.buttonOptions,
     this.contentPadding,
     this.decoration,
@@ -420,23 +424,12 @@ class _WidgetCardState extends State<WidgetCard> {
                                     onTap: onNext,
                                     child: Text(
                                       configureNextButton(
-                                          widget.steps,
-                                          widget.buttonOptions!.buttonTitle ??
-                                              'Lanjut'),
-                                      style: TextStyle(
-                                        color: Color.fromARGB(
-                                          255,
-                                          129,
-                                          138,
-                                          149,
-                                        ),
+                                        widget.steps,
+                                        widget.buttonOptions!.buttonTitle ??
+                                            'Lanjut',
                                       ),
-                                    ),
-                                  ),
-                                  widget.showSteps
-                                      ? Text(
-                                          '${widget.steps}',
-                                          style: TextStyle(
+                                      style: widget.nextTextStyle ??
+                                          TextStyle(
                                             color: Color.fromARGB(
                                               255,
                                               129,
@@ -444,6 +437,20 @@ class _WidgetCardState extends State<WidgetCard> {
                                               149,
                                             ),
                                           ),
+                                    ),
+                                  ),
+                                  widget.showSteps
+                                      ? Text(
+                                          '${widget.steps}',
+                                          style: widget.stepsTextStyle ??
+                                              TextStyle(
+                                                color: Color.fromARGB(
+                                                  255,
+                                                  129,
+                                                  138,
+                                                  149,
+                                                ),
+                                              ),
                                         )
                                       : SizedBox(),
                                 ],
