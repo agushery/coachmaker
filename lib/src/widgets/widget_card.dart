@@ -11,6 +11,7 @@ class WidgetCard extends StatefulWidget {
   final Function()? onSkip;
   final Function()? onTapNext;
   final Duration duration;
+  final Decoration? decoration;
   final Widget Function(Function? onSkip, Function onNext)? customNavigator;
 
   const WidgetCard({
@@ -23,6 +24,7 @@ class WidgetCard extends StatefulWidget {
     required this.model,
     required this.duration,
     this.buttonOptions,
+    this.decoration,
     this.child,
     this.onSkip,
     this.onTapNext,
@@ -316,9 +318,11 @@ class _WidgetCardState extends State<WidgetCard> {
                       ? MediaQuery.of(context).size.width - 80
                       : widget.model.maxWidth,
                   key: GlobalObjectKey('pointWidget1234567890'),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10)),
+                  decoration: widget.decoration ??
+                      BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                   child: Padding(
                     padding: const EdgeInsets.all(10),
                     child: Row(

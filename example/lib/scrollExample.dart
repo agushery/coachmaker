@@ -50,7 +50,13 @@ class _ScrollExampleState extends State<ScrollExample> {
         initial: 'floatBtn',
         child: FloatingActionButton(
           onPressed: () {
-            CoachMaker(context,
+            CoachMaker(
+                    buildContext: context,
+                    decoration: BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(),
+                    ),
                     initialList: [
                       CoachModel(
                         initial: '1',

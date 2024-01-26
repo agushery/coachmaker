@@ -94,7 +94,8 @@ class _HorizontalExampleState extends State<HorizontalExample> {
             initial: 'floatBtn3',
             child: FloatingActionButton(
               onPressed: () {
-                CoachMaker(context,
+                CoachMaker(
+                        buildContext: context,
                         initialList: [
                           CoachModel(
                             initial: '1',
@@ -211,6 +212,11 @@ class _HorizontalExampleState extends State<HorizontalExample> {
                               )),
                         ],
                         skip: () {},
+                        decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(),
+                        ),
                         nextStep: CoachMakerControl.next,
                         buttonOptions: CoachButtonOptions(
                             skipTitle: 'Lewati',

@@ -9,6 +9,7 @@ class WidgetMain extends StatefulWidget {
   final CoachModel model;
   final CoachButtonOptions? buttonOptions;
   final Duration duration;
+  final Decoration? decoration;
 
   final Function()? onSkip;
   final Function()? onTapNext;
@@ -21,13 +22,14 @@ class WidgetMain extends StatefulWidget {
     required this.y,
     required this.h,
     required this.w,
+    required this.duration,
+    required this.model,
     this.padding = 8,
     this.borderRadius = 5,
-    required this.duration,
+    this.decoration,
     this.onSkip,
     this.onTapNext,
     this.buttonOptions,
-    required this.model,
     this.customNavigator,
   }) : super(key: key);
 
@@ -189,6 +191,7 @@ class _WidgetMainState extends State<WidgetMain> {
           w: w,
           enable: enable,
           model: widget.model,
+          decoration: widget.decoration,
           buttonOptions: widget.buttonOptions,
           onSkip: widget.onSkip,
           customNavigator: widget.customNavigator,

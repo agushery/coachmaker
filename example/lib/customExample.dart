@@ -1,28 +1,8 @@
 import 'package:coachmaker/coachmaker.dart';
-import 'package:example/customExample.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: customExample(
-        title: '',
-      ),
-    );
-  }
-}
-
-class Simple extends StatefulWidget {
-  Simple({Key? key, required this.title}) : super(key: key);
+class customExample extends StatefulWidget {
+  customExample({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
@@ -30,7 +10,7 @@ class Simple extends StatefulWidget {
   _SimpleState createState() => _SimpleState();
 }
 
-class _SimpleState extends State<Simple> {
+class _SimpleState extends State<customExample> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -117,9 +97,9 @@ class _SimpleState extends State<Simple> {
             CoachMaker(
               buildContext: context,
               decoration: BoxDecoration(
-                color: Color(0x38454F),
+                color: Color.fromARGB(255, 56, 69, 79),
                 borderRadius: BorderRadius.circular(10),
-                border: Border.all(),
+                border: Border.all(color: Color.fromARGB(51, 255, 255, 255)),
               ),
               // firstDelay: Duration(seconds: 10),
               // duration: Duration(milliseconds: 600),

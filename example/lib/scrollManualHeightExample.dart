@@ -97,7 +97,13 @@ class _ScrollManualHeightExampleState extends State<ScrollManualHeightExample> {
         initial: 'floatBtn',
         child: FloatingActionButton(
           onPressed: () {
-            CoachMaker(context,
+            CoachMaker(
+                    buildContext: context,
+                    decoration: BoxDecoration(
+                      color: Colors.green,
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(),
+                    ),
                     initialList: [
                       CoachModel(
                         initial: '1',

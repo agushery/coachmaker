@@ -47,7 +47,7 @@ class CoachMaker {
 
   ///context
   ///
-  final BuildContext context;
+  final BuildContext buildContext;
 
   ///skip boolean, you can set false if you want to hide skip button
   ///
@@ -61,18 +61,23 @@ class CoachMaker {
   ///
   final CoachButtonOptions? buttonOptions;
 
+  ///custom background decoration
+  ///
+  final Decoration? decoration;
+
   ///custom widget navigator
   ///
   final Widget Function(Function? onSkip, Function onNext)? customNavigator;
 
   ///constructor
   ///
-  CoachMaker(
-    this.context, {
+  CoachMaker({
+    required this.buildContext,
     required this.initialList,
     this.firstDelay = const Duration(milliseconds: 1),
     this.duration = const Duration(seconds: 1),
     this.skip,
+    this.decoration,
     this.nextStep = CoachMakerControl.next,
     this.buttonOptions,
     this.customNavigator,
@@ -105,6 +110,7 @@ class CoachMaker {
         w: w + 16,
         duration: duration,
         padding: 10,
+        decoration: decoration,
         buttonOptions: buttonOptions ?? CoachButtonOptions(),
         model: initialList[currentIndex],
         customNavigator: customNavigator,
@@ -152,10 +158,10 @@ class CoachMaker {
         if (overlayEntry == null) {
           if (currentIndex == 0) {
             overlayBlock = buildOverlayBlock();
-            Overlay.of(context)?.insert(overlayBlock!);
+            Overlay.of(buildContext).insert(overlayBlock!);
           }
           overlayEntry = buildOverlay();
-          Overlay.of(context)?.insert(overlayEntry!);
+          Overlay.of(buildContext).insert(overlayEntry!);
         }
       });
     } catch (e) {
