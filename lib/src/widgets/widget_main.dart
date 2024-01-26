@@ -11,6 +11,9 @@ class WidgetMain extends StatefulWidget {
   final Duration duration;
   final Decoration? decoration;
   final EdgeInsets? contentPadding;
+  final Widget? closeIcon;
+  final String steps;
+  final bool showSteps;
 
   final Function()? onSkip;
   final Function()? onTapNext;
@@ -25,6 +28,9 @@ class WidgetMain extends StatefulWidget {
     required this.w,
     required this.duration,
     required this.model,
+    this.steps = '',
+    this.showSteps = true,
+    this.closeIcon,
     this.padding = 8,
     this.contentPadding,
     this.borderRadius = 5,
@@ -193,6 +199,9 @@ class _WidgetMainState extends State<WidgetMain> {
           w: w,
           enable: enable,
           model: widget.model,
+          closeIcon: widget.closeIcon,
+          steps: widget.steps,
+          showSteps: widget.showSteps,
           decoration: widget.decoration,
           contentPadding: widget.contentPadding,
           buttonOptions: widget.buttonOptions,

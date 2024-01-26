@@ -12,7 +12,10 @@ class WidgetCard extends StatefulWidget {
   final Function()? onTapNext;
   final Duration duration;
   final Decoration? decoration;
+  final Widget? closeIcon;
   final EdgeInsets? contentPadding;
+  final String steps;
+  final bool showSteps;
   final Widget Function(Function? onSkip, Function onNext)? customNavigator;
 
   const WidgetCard({
@@ -24,6 +27,9 @@ class WidgetCard extends StatefulWidget {
     required this.w,
     required this.model,
     required this.duration,
+    this.steps = '',
+    this.showSteps = true,
+    this.closeIcon,
     this.buttonOptions,
     this.contentPadding,
     this.decoration,
@@ -341,14 +347,26 @@ class _WidgetCardState extends State<WidgetCard> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                '${widget.model.title}',
-                                style: widget.model.titleTextStyle ??
-                                    TextStyle(
-                                      fontSize: 15,
-                                      color: Colors.black87,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    '${widget.model.title}',
+                                    style: widget.model.titleTextStyle ??
+                                        TextStyle(
+                                          fontSize: 15,
+                                          color: Colors.black87,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                  ),
+                                  widget.closeIcon != null
+                                      ? GestureDetector(
+                                          onTap: widget.onSkip,
+                                          child: widget.closeIcon,
+                                        )
+                                      : SizedBox(),
+                                ],
                               ),
                               SizedBox(height: 12),
                               widget.model.subtitle!.length == 1
@@ -398,60 +416,97 @@ class _WidgetCardState extends State<WidgetCard> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  widget.model.subtitle!.length == 1
-                                      ? SizedBox()
-                                      : Row(
-                                          children: List.generate(
-                                              widget.model.subtitle!.length,
-                                              (index) => Padding(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                            right: 3),
-                                                    child: Container(
-                                                      height: 5,
-                                                      width: 5,
-                                                      decoration: BoxDecoration(
-                                                          color: index ==
-                                                                  currentPage
-                                                              ? Colors.black87
-                                                              : Colors.grey,
-                                                          shape:
-                                                              BoxShape.circle),
-                                                    ),
-                                                  )),
+                                  GestureDetector(
+                                    onTap: onNext,
+                                    child: Text(
+                                      configureNextButton(
+                                          widget.steps,
+                                          widget.buttonOptions!.buttonTitle ??
+                                              'Lanjut'),
+                                      style: TextStyle(
+                                        color: Color.fromARGB(
+                                          255,
+                                          129,
+                                          138,
+                                          149,
                                         ),
-                                  widget.customNavigator != null
-                                      ? widget.customNavigator!(
-                                          widget.onSkip ?? null,
-                                          onNext,
+                                      ),
+                                    ),
+                                  ),
+                                  widget.showSteps
+                                      ? Text(
+                                          '${widget.steps}',
+                                          style: TextStyle(
+                                            color: Color.fromARGB(
+                                              255,
+                                              129,
+                                              138,
+                                              149,
+                                            ),
+                                          ),
                                         )
-                                      : Row(
-                                          children: [
-                                            (widget.onSkip == null
-                                                ? SizedBox()
-                                                : MaterialButton(
-                                                    onPressed: widget.onSkip,
-                                                    child: Text(
-                                                      '${widget.buttonOptions!.skipTitle}',
-                                                      style: TextStyle(
-                                                        color: Colors.grey,
-                                                      ),
-                                                    ),
-                                                  )),
-                                            SizedBox(
-                                              width: 5,
-                                            ),
-                                            ElevatedButton(
-                                              onPressed: onNext,
-                                              child: Text(
-                                                  '${widget.buttonOptions!.buttonTitle}'),
-                                              style: widget
-                                                  .buttonOptions!.buttonStyle,
-                                            ),
-                                          ],
-                                        ),
+                                      : SizedBox(),
                                 ],
-                              )
+                              ),
+
+                              // Row(
+                              //   mainAxisAlignment:
+                              //       MainAxisAlignment.spaceBetween,
+                              //   children: [
+                              //     widget.model.subtitle!.length == 1
+                              //         ? SizedBox()
+                              //         : Row(
+                              //             children: List.generate(
+                              //                 widget.model.subtitle!.length,
+                              //                 (index) => Padding(
+                              //                       padding:
+                              //                           const EdgeInsets.only(
+                              //                               right: 3),
+                              //                       child: Container(
+                              //                         height: 5,
+                              //                         width: 5,
+                              //                         decoration: BoxDecoration(
+                              //                             color: index ==
+                              //                                     currentPage
+                              //                                 ? Colors.black87
+                              //                                 : Colors.grey,
+                              //                             shape:
+                              //                                 BoxShape.circle),
+                              //                       ),
+                              //                     )),
+                              //           ),
+                              //     widget.customNavigator != null
+                              //         ? widget.customNavigator!(
+                              //             widget.onSkip ?? null,
+                              //             onNext,
+                              //           )
+                              //         : Row(
+                              //             children: [
+                              //               (widget.onSkip == null
+                              //                   ? SizedBox()
+                              //                   : MaterialButton(
+                              //                       onPressed: widget.onSkip,
+                              //                       child: Text(
+                              //                         '${widget.buttonOptions!.skipTitle}',
+                              //                         style: TextStyle(
+                              //                           color: Colors.grey,
+                              //                         ),
+                              //                       ),
+                              //                     )),
+                              //               SizedBox(
+                              //                 width: 5,
+                              //               ),
+                              //               ElevatedButton(
+                              //                 onPressed: onNext,
+                              //                 child: Text(
+                              //                     '${widget.buttonOptions!.buttonTitle}'),
+                              //                 style: widget
+                              //                     .buttonOptions!.buttonStyle,
+                              //               ),
+                              //             ],
+                              //           ),
+                              //   ],
+                              // )
                             ],
                           ),
                         ),
@@ -465,6 +520,13 @@ class _WidgetCardState extends State<WidgetCard> {
         ),
       ),
     );
+  }
+
+  String configureNextButton(String title, String defaultString) {
+    /* check if the step is in the last then
+    change the copywrite */
+    if (title[0] == title[title.length - 1]) return 'Ok';
+    return defaultString;
   }
 }
 

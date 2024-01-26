@@ -97,6 +97,10 @@ class _SimpleState extends State<customExample> {
             CoachMaker(
               buildContext: context,
               contentPadding: EdgeInsets.all(20),
+              closeIcon: Icon(
+                Icons.close,
+                color: Colors.white,
+              ),
               decoration: BoxDecoration(
                 color: Color.fromARGB(255, 56, 69, 79),
                 borderRadius: BorderRadius.circular(10),

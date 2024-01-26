@@ -69,6 +69,14 @@ class CoachMaker {
   ///
   final EdgeInsets? contentPadding;
 
+  ///custom content padding
+  ///
+  final Widget? closeIcon;
+
+  /// show steps
+  ///
+  final bool showSteps;
+
   ///custom widget navigator
   ///
   final Widget Function(Function? onSkip, Function onNext)? customNavigator;
@@ -80,6 +88,8 @@ class CoachMaker {
     required this.initialList,
     this.firstDelay = const Duration(milliseconds: 1),
     this.duration = const Duration(seconds: 1),
+    this.closeIcon,
+    this.showSteps = true,
     this.skip,
     this.decoration,
     this.contentPadding,
@@ -115,7 +125,10 @@ class CoachMaker {
         w: w + 16,
         duration: duration,
         padding: 10,
+        closeIcon: closeIcon,
+        showSteps: showSteps,
         decoration: decoration,
+        steps: '${currentIndex + 1}/${initialList.length}',
         buttonOptions: buttonOptions ?? CoachButtonOptions(),
         contentPadding: contentPadding,
         model: initialList[currentIndex],
