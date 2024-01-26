@@ -96,6 +96,12 @@ class _SimpleState extends State<customExample> {
           onPressed: () {
             CoachMaker(
               buildContext: context,
+              nextTextStyle: TextStyle(
+                color: Colors.green,
+              ),
+              stepsTextStyle: TextStyle(
+                color: Colors.red,
+              ),
               contentPadding: EdgeInsets.all(20),
               closeIcon: Icon(
                 Icons.close,

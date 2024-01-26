@@ -138,6 +138,8 @@ class CoachMaker {
         closeIcon: closeIcon,
         showSteps: showSteps,
         decoration: decoration,
+        nextTextStyle: nextTextStyle,
+        stepsTextStyle: stepsTextStyle,
         steps: '${currentIndex + 1}/${initialList.length}',
         buttonOptions: buttonOptions ?? CoachButtonOptions(),
         contentPadding: contentPadding,
