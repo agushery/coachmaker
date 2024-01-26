@@ -10,6 +10,7 @@ class WidgetMain extends StatefulWidget {
   final CoachButtonOptions? buttonOptions;
   final Duration duration;
   final Decoration? decoration;
+  final EdgeInsets? contentPadding;
 
   final Function()? onSkip;
   final Function()? onTapNext;
@@ -25,6 +26,7 @@ class WidgetMain extends StatefulWidget {
     required this.duration,
     required this.model,
     this.padding = 8,
+    this.contentPadding,
     this.borderRadius = 5,
     this.decoration,
     this.onSkip,
@@ -192,6 +194,7 @@ class _WidgetMainState extends State<WidgetMain> {
           enable: enable,
           model: widget.model,
           decoration: widget.decoration,
+          contentPadding: widget.contentPadding,
           buttonOptions: widget.buttonOptions,
           onSkip: widget.onSkip,
           customNavigator: widget.customNavigator,

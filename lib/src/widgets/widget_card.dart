@@ -12,6 +12,7 @@ class WidgetCard extends StatefulWidget {
   final Function()? onTapNext;
   final Duration duration;
   final Decoration? decoration;
+  final EdgeInsets? contentPadding;
   final Widget Function(Function? onSkip, Function onNext)? customNavigator;
 
   const WidgetCard({
@@ -24,6 +25,7 @@ class WidgetCard extends StatefulWidget {
     required this.model,
     required this.duration,
     this.buttonOptions,
+    this.contentPadding,
     this.decoration,
     this.child,
     this.onSkip,
@@ -324,7 +326,7 @@ class _WidgetCardState extends State<WidgetCard> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                   child: Padding(
-                    padding: const EdgeInsets.all(10),
+                    padding: widget.contentPadding ?? const EdgeInsets.all(10),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -348,6 +350,7 @@ class _WidgetCardState extends State<WidgetCard> {
                                       fontWeight: FontWeight.bold,
                                     ),
                               ),
+                              SizedBox(height: 12),
                               widget.model.subtitle!.length == 1
                                   ? Text(
                                       '${widget.model.subtitle!.first}',
@@ -390,6 +393,7 @@ class _WidgetCardState extends State<WidgetCard> {
                                             }),
                                       ),
                                     ),
+                              SizedBox(height: 20),
                               Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,

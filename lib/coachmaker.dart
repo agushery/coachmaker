@@ -65,6 +65,10 @@ class CoachMaker {
   ///
   final Decoration? decoration;
 
+  ///custom content padding
+  ///
+  final EdgeInsets? contentPadding;
+
   ///custom widget navigator
   ///
   final Widget Function(Function? onSkip, Function onNext)? customNavigator;
@@ -78,6 +82,7 @@ class CoachMaker {
     this.duration = const Duration(seconds: 1),
     this.skip,
     this.decoration,
+    this.contentPadding,
     this.nextStep = CoachMakerControl.next,
     this.buttonOptions,
     this.customNavigator,
@@ -112,6 +117,7 @@ class CoachMaker {
         padding: 10,
         decoration: decoration,
         buttonOptions: buttonOptions ?? CoachButtonOptions(),
+        contentPadding: contentPadding,
         model: initialList[currentIndex],
         customNavigator: customNavigator,
         onSkip: skip == null
