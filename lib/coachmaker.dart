@@ -93,6 +93,14 @@ class CoachMaker {
   ///
   final Widget Function(Function? onSkip, Function onNext)? customNavigator;
 
+  // get current index
+  ///
+  get getCurrentIndex => currentIndex;
+
+  /// on tap next
+  /// with index param
+  final Function(int)? onTapNext;
+
   ///constructor
   ///
   CoachMaker({
@@ -108,6 +116,7 @@ class CoachMaker {
     this.decoration,
     this.contentPadding,
     this.borderColor,
+    this.onTapNext,
     this.nextStep = CoachMakerControl.next,
     this.buttonOptions,
     this.customNavigator,
@@ -160,6 +169,7 @@ class CoachMaker {
                 skip!();
               },
         onTapNext: () {
+          print('shahaa');
           switch (nextStep) {
             case CoachMakerControl.next:
               nextOverlay();
@@ -171,6 +181,7 @@ class CoachMaker {
               break;
             default:
           }
+          onTapNext!(currentIndex);
         },
       );
     });

@@ -98,6 +98,9 @@ class _SimpleState extends State<customExample> {
           onPressed: () {
             CoachMaker(
               buildContext: context,
+              onTapNext: (index) {
+                print('idx $index');
+              },
               nextTextStyle: TextStyle(
                 color: Colors.green,
               ),
@@ -178,6 +181,7 @@ class _SimpleState extends State<customExample> {
               //     ],
               //   );
               // },
+
               buttonOptions: CoachButtonOptions(
                 skipTitle: 'Lewati',
                 buttonTitle: 'Lanjut',
