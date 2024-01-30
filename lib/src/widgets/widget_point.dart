@@ -10,7 +10,7 @@ class CoachPoint extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       key: GlobalObjectKey('$initial'),
       child: child,
     );

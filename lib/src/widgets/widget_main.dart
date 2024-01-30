@@ -16,6 +16,7 @@ class WidgetMain extends StatefulWidget {
   final TextStyle? stepsTextStyle;
   final String steps;
   final bool showSteps;
+  final Color? borderColor;
 
   final Function()? onSkip;
   final Function()? onTapNext;
@@ -41,6 +42,7 @@ class WidgetMain extends StatefulWidget {
     this.decoration,
     this.onSkip,
     this.onTapNext,
+    this.borderColor,
     this.buttonOptions,
     this.customNavigator,
   }) : super(key: key);
@@ -141,58 +143,73 @@ class _WidgetMainState extends State<WidgetMain> {
     return Stack(
       fit: StackFit.expand,
       children: [
-        ColorFiltered(
-          colorFilter:
-              ColorFilter.mode(Colors.black.withOpacity(0.8), BlendMode.srcOut),
-          child: Stack(
-            fit: StackFit.expand,
-            children: [
-              GestureDetector(
-                onTap: () {
-                  // removeOverlay();
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.black,
-                      backgroundBlendMode: BlendMode.dstOut),
-                ),
+        AnimatedPositioned(
+          left: x,
+          top: y,
+          height: h == 0 ? MediaQuery.of(context).size.height : h,
+          width: w == 0 ? MediaQuery.of(context).size.width : w,
+          duration: widget.duration,
+          curve: Curves.fastEaseInToSlowEaseOut,
+          child: Container(
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: widget.borderColor ?? Colors.green,
+                width: 2,
               ),
-              AnimatedPositioned(
-                left: x,
-                top: y,
-                height: h == 0 ? MediaQuery.of(context).size.height : h,
-                width: w == 0 ? MediaQuery.of(context).size.width : w,
-                duration: widget.duration,
-                curve: Curves.fastOutSlowIn,
-                child: GestureDetector(
-                  onTap: () async {
-                    // if (enable) {
-                    //   setState(() {
-                    //     enable = false;
-                    //   });
-                    //   timer!.cancel();
-                    //   setState(() {
-                    //     h = MediaQuery.of(context).size.height;
-                    //     w = MediaQuery.of(context).size.width;
-                    //     x = 0;
-                    //     y = 0;
-                    //   });
-                    //   await Future.delayed(Duration(seconds: 1));
-
-                    //   widget.onTapNext!();
-                    // }
+              borderRadius: BorderRadius.circular(
+                widget.borderRadius,
+              ),
+              // color: Colors.green,
+            ),
+          ),
+        ),
+        ColorFiltered(
+          colorFilter: ColorFilter.mode(
+            Colors.black.withOpacity(0.8),
+            BlendMode.srcOut,
+          ),
+          child: Container(
+            child: Stack(
+              fit: StackFit.expand,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    // removeOverlay();
                   },
                   child: Container(
-                    height: h == 0 ? MediaQuery.of(context).size.height : h,
-                    width: w == 0 ? MediaQuery.of(context).size.width : w,
                     decoration: BoxDecoration(
-                        color: Colors.black,
-                        borderRadius:
-                            BorderRadius.circular(widget.borderRadius)),
+                      color: Colors.red,
+                      backgroundBlendMode: BlendMode.dstOut,
+                    ),
                   ),
                 ),
-              ),
-            ],
+                AnimatedPositioned(
+                  left: x,
+                  top: y,
+                  height: h == 0 ? MediaQuery.of(context).size.height : h,
+                  width: w == 0 ? MediaQuery.of(context).size.width : w,
+                  duration: widget.duration,
+                  curve: Curves.fastEaseInToSlowEaseOut,
+                  child: Container(
+                    height: h == 0 ? MediaQuery.of(context).size.height : h - 5,
+                    width: w == 0 ? MediaQuery.of(context).size.width : w - 5,
+                    // padding: EdgeInsets.all(20),
+                    // margin: EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border.all(
+                        width: 1,
+                        color: Colors.green,
+                        strokeAlign: BorderSide.strokeAlignCenter,
+                      ),
+                      borderRadius: BorderRadius.circular(
+                        widget.borderRadius,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
         WidgetCard(

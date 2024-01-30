@@ -85,6 +85,10 @@ class CoachMaker {
   ///
   final bool showSteps;
 
+  /// border color
+  ///
+  final Color? borderColor;
+
   ///custom widget navigator
   ///
   final Widget Function(Function? onSkip, Function onNext)? customNavigator;
@@ -103,6 +107,7 @@ class CoachMaker {
     this.stepsTextStyle,
     this.decoration,
     this.contentPadding,
+    this.borderColor,
     this.nextStep = CoachMakerControl.next,
     this.buttonOptions,
     this.customNavigator,
@@ -138,6 +143,7 @@ class CoachMaker {
         closeIcon: closeIcon,
         showSteps: showSteps,
         decoration: decoration,
+        borderColor: borderColor,
         nextTextStyle: nextTextStyle,
         stepsTextStyle: stepsTextStyle,
         steps: '${currentIndex + 1}/${initialList.length}',
