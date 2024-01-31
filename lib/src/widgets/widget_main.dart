@@ -151,6 +151,7 @@ class _WidgetMainState extends State<WidgetMain> {
           duration: widget.duration,
           curve: Curves.fastEaseInToSlowEaseOut,
           child: Container(
+            margin: EdgeInsets.all(8),
             decoration: BoxDecoration(
               border: Border.all(
                 color: widget.borderColor ?? Colors.green,
@@ -191,10 +192,10 @@ class _WidgetMainState extends State<WidgetMain> {
                   duration: widget.duration,
                   curve: Curves.fastEaseInToSlowEaseOut,
                   child: Container(
-                    height: h == 0 ? MediaQuery.of(context).size.height : h - 5,
-                    width: w == 0 ? MediaQuery.of(context).size.width : w - 5,
+                    height: h == 0 ? MediaQuery.of(context).size.height : h,
+                    width: w == 0 ? MediaQuery.of(context).size.width : w,
                     // padding: EdgeInsets.all(20),
-                    // margin: EdgeInsets.all(20),
+                    margin: EdgeInsets.all(8),
                     decoration: BoxDecoration(
                       color: Colors.white,
                       border: Border.all(

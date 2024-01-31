@@ -19,12 +19,11 @@ class _SimpleState extends State<customExample> {
         backgroundColor: Colors.grey,
       ),
       backgroundColor: Colors.grey,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Padding(
+      body: Stack(
+        children: [
+          Align(
+            alignment: Alignment.bottomLeft,
+            child: Padding(
               padding: const EdgeInsets.only(right: 100),
               child: CoachPoint(
                 initial: '1',
@@ -42,54 +41,62 @@ class _SimpleState extends State<customExample> {
                 ),
               ),
             ),
-            SizedBox(
-              height: 5,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                CoachPoint(
-                  initial: '2',
-                  child: Container(
-                    color: Colors.red,
-                    height: 50,
-                    width: 100,
-                    child: Center(
-                      child: Text(
-                        'Sorot aku kakak',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Row(
+          ),
+          Center(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: CoachPoint(
-                    initial: '3',
-                    child: Container(
-                      color: Colors.red,
-                      height: 50,
-                      width: 100,
-                      child: Center(
-                        child: Text(
-                          'Sorot aku kakak',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(color: Colors.white),
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                SizedBox(
+                  height: 5,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    CoachPoint(
+                      initial: '2',
+                      child: Container(
+                        color: Colors.red,
+                        height: 50,
+                        width: 100,
+                        child: Center(
+                          child: Text(
+                            'Sorot aku kakak',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(color: Colors.white),
+                          ),
                         ),
                       ),
                     ),
-                  ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: CoachPoint(
+                        initial: '3',
+                        child: Container(
+                          color: Colors.red,
+                          height: 50,
+                          width: 100,
+                          child: Center(
+                            child: Text(
+                              'Sorot aku kakak',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: CoachPoint(
