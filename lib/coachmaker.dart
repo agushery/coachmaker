@@ -104,6 +104,46 @@ class CoachMaker {
   /// is active
   final bool isActive;
 
+  CoachMaker copyWith({
+    BuildContext? buildContext,
+    List<CoachModel>? initialList,
+    Duration? firstDelay,
+    Duration? duration,
+    Widget? closeIcon,
+    bool? showSteps,
+    Function()? skip,
+    TextStyle? nextTextStyle,
+    TextStyle? stepsTextStyle,
+    Decoration? decoration,
+    EdgeInsets? contentPadding,
+    Color? borderColor,
+    Function(int)? onTapNext,
+    CoachMakerControl? nextStep,
+    CoachButtonOptions? buttonOptions,
+    Widget Function(Function? onSkip, Function onNext)? customNavigator,
+    bool? isActive,
+  }) {
+    return CoachMaker(
+      buildContext: buildContext ?? this.buildContext,
+      initialList: initialList ?? this.initialList,
+      firstDelay: firstDelay ?? this.firstDelay,
+      duration: duration ?? this.duration,
+      closeIcon: closeIcon ?? this.closeIcon,
+      showSteps: showSteps ?? this.showSteps,
+      skip: skip ?? this.skip,
+      nextTextStyle: nextTextStyle ?? this.nextTextStyle,
+      stepsTextStyle: stepsTextStyle ?? this.stepsTextStyle,
+      decoration: decoration ?? this.decoration,
+      contentPadding: contentPadding ?? this.contentPadding,
+      borderColor: borderColor ?? this.borderColor,
+      onTapNext: onTapNext ?? this.onTapNext,
+      nextStep: nextStep ?? this.nextStep,
+      buttonOptions: buttonOptions ?? this.buttonOptions,
+      customNavigator: customNavigator ?? this.customNavigator,
+      isActive: isActive ?? this.isActive,
+    );
+  }
+
   ///constructor
   ///
   CoachMaker({
