@@ -52,7 +52,7 @@ class _SimpleState extends State<Simple> {
                   width: 100,
                   child: Center(
                     child: Text(
-                      'Sorot aku kakak',
+                      'Sorot aku kakak 1',
                       textAlign: TextAlign.center,
                       style: TextStyle(color: Colors.white),
                     ),
@@ -198,6 +198,7 @@ class _SimpleState extends State<Simple> {
               //     ],
               //   );
               // },
+              isActive: false,
               buttonOptions: CoachButtonOptions(
                 skipTitle: 'Lewati',
                 buttonTitle: 'Lanjut',

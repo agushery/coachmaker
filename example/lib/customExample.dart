@@ -188,6 +188,7 @@ class _SimpleState extends State<customExample> {
               //     ],
               //   );
               // },
+              isActive: false,
 
               buttonOptions: CoachButtonOptions(
                 skipTitle: 'Lewati',

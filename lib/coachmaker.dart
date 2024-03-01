@@ -101,6 +101,9 @@ class CoachMaker {
   /// with index param
   final Function(int)? onTapNext;
 
+  /// is active
+  final bool isActive;
+
   ///constructor
   ///
   CoachMaker({
@@ -120,6 +123,7 @@ class CoachMaker {
     this.nextStep = CoachMakerControl.next,
     this.buttonOptions,
     this.customNavigator,
+    this.isActive = true,
   });
 
   ///build overlay block
@@ -191,27 +195,32 @@ class CoachMaker {
   ///
   void show() {
     try {
-      Future.delayed(currentIndex == 0 ? firstDelay : Duration(milliseconds: 1),
-          () {
-        RenderBox box = GlobalObjectKey(initialList[currentIndex].initial!)
-            .currentContext!
-            .findRenderObject() as RenderBox;
+      if (isActive) {
+        Future.delayed(
+            currentIndex == 0 ? firstDelay : Duration(milliseconds: 1), () {
+          RenderBox box = GlobalObjectKey(initialList[currentIndex].initial!)
+              .currentContext!
+              .findRenderObject() as RenderBox;
 
-        Offset position = box.localToGlobal(Offset.zero);
-        y = position.dy;
-        x = position.dx;
-        h = box.size.height;
-        w = box.size.width;
+          Offset position = box.localToGlobal(Offset.zero);
+          y = position.dy;
+          x = position.dx;
+          h = box.size.height;
+          w = box.size.width;
 
-        if (overlayEntry == null) {
-          if (currentIndex == 0) {
-            overlayBlock = buildOverlayBlock();
-            Overlay.of(buildContext).insert(overlayBlock!);
+          if (overlayEntry == null) {
+            if (currentIndex == 0) {
+              overlayBlock = buildOverlayBlock();
+              Overlay.of(buildContext).insert(overlayBlock!);
+            }
+            overlayEntry = buildOverlay();
+            Overlay.of(buildContext).insert(overlayEntry!);
           }
-          overlayEntry = buildOverlay();
-          Overlay.of(buildContext).insert(overlayEntry!);
-        }
-      });
+        });
+      } else {
+        overlayBlock?.remove();
+        overlayBlock = null;
+      }
     } catch (e) {
       overlayBlock?.remove();
       overlayBlock = null;
