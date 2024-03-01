@@ -104,6 +104,9 @@ class CoachMaker {
   /// is active
   final bool isActive;
 
+  /// custom steps
+  final String? customStep;
+
   CoachMaker copyWith({
     BuildContext? buildContext,
     List<CoachModel>? initialList,
@@ -122,6 +125,7 @@ class CoachMaker {
     CoachButtonOptions? buttonOptions,
     Widget Function(Function? onSkip, Function onNext)? customNavigator,
     bool? isActive,
+    String? customStep,
   }) {
     return CoachMaker(
       buildContext: buildContext ?? this.buildContext,
@@ -141,6 +145,7 @@ class CoachMaker {
       buttonOptions: buttonOptions ?? this.buttonOptions,
       customNavigator: customNavigator ?? this.customNavigator,
       isActive: isActive ?? this.isActive,
+      customStep: customStep,
     );
   }
 
@@ -164,6 +169,7 @@ class CoachMaker {
     this.buttonOptions,
     this.customNavigator,
     this.isActive = true,
+    this.customStep,
   });
 
   ///build overlay block
@@ -199,7 +205,7 @@ class CoachMaker {
         borderColor: borderColor,
         nextTextStyle: nextTextStyle,
         stepsTextStyle: stepsTextStyle,
-        steps: '${currentIndex + 1}/${initialList.length}',
+        steps: customStep ?? '${currentIndex + 1}/${initialList.length}',
         buttonOptions: buttonOptions ?? CoachButtonOptions(),
         contentPadding: contentPadding,
         model: initialList[currentIndex],
