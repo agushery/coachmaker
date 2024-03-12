@@ -265,8 +265,10 @@ class _WidgetCardState extends State<WidgetCard> {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      left:
-          MediaQuery.of(context).size.height > MediaQuery.of(context).size.width
+      left: widget.model.customLeft != null
+          ? widget.model.customLeft!(x, y, h, hCard)
+          : MediaQuery.of(context).size.height >
+                  MediaQuery.of(context).size.width
               ?
 
               ///potrait
@@ -287,8 +289,10 @@ class _WidgetCardState extends State<WidgetCard> {
                               : x - (w / 2) + 8
                           : 0
                       : x - w - (w / 2) - wCard - 16),
-      top:
-          MediaQuery.of(context).size.height > MediaQuery.of(context).size.width
+      top: widget.model.customTop != null
+          ? widget.model.customTop!(x, y, h, hCard)
+          : MediaQuery.of(context).size.height >
+                  MediaQuery.of(context).size.width
               ?
 
               ///potrait
