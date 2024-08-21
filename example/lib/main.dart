@@ -1,5 +1,6 @@
 import 'package:coachmaker/coachmaker.dart';
 import 'package:example/customExample.dart';
+import 'package:example/singleCoachMark.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,9 +15,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: customExample(
-        title: '',
-      ),
+      home: SingleCoachMark(
+          // title: '',
+          ),
     );
   }
 }
@@ -114,7 +115,7 @@ class _SimpleState extends State<Simple> {
         initial: '4',
         child: FloatingActionButton(
           onPressed: () {
-            CoachMaker(
+            var coachMaker = CoachMaker(
               buildContext: context,
               decoration: BoxDecoration(
                 color: Color(0x38454F),
@@ -131,11 +132,11 @@ class _SimpleState extends State<Simple> {
                   subtitle: [
                     'Dasar kau keong racun\nBaru kenal eh ngajak tidur\nNgomong nggak sopan santun\nKau anggap aku ayam kampung',
                   ],
-                  header: Image.network(
-                    'https://facebookbrand.com/wp-content/uploads/2019/04/f_logo_RGB-Hex-Blue_512.png?w=512&h=512',
-                    height: 50,
-                    width: 50,
-                  ),
+                  // header: Image.network(
+                  //   'https://facebookbrand.com/wp-content/uploads/2019/04/f_logo_RGB-Hex-Blue_512.png?w=512&h=512',
+                  //   height: 50,
+                  //   width: 50,
+                  // ),
                 ),
                 CoachModel(
                     initial: '2',
@@ -202,12 +203,14 @@ class _SimpleState extends State<Simple> {
               buttonOptions: CoachButtonOptions(
                 skipTitle: 'Lewati',
                 buttonTitle: 'Lanjut',
+                titleLastStep: 'Selesai',
                 buttonStyle: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.green),
                   elevation: MaterialStateProperty.all(0),
                 ),
               ),
-            ).show();
+            );
+            coachMaker.show();
           },
           tooltip: 'Increment',
           child: Icon(Icons.add),

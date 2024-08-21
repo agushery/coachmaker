@@ -203,6 +203,7 @@ class CoachMaker {
         showSteps: showSteps,
         decoration: decoration,
         borderColor: borderColor,
+        titleLastStep: buttonOptions?.titleLastStep,
         nextTextStyle: nextTextStyle,
         stepsTextStyle: stepsTextStyle,
         steps: customStep ?? '${currentIndex + 1}/${initialList.length}',

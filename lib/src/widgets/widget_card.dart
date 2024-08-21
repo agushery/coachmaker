@@ -6,6 +6,7 @@ class WidgetCard extends StatefulWidget {
   final double x, y, h, w;
   final bool enable;
   final Widget? child;
+  final String? titleLastStep;
   final CoachModel model;
   final CoachButtonOptions? buttonOptions;
   final Function()? onSkip;
@@ -30,6 +31,7 @@ class WidgetCard extends StatefulWidget {
     required this.model,
     required this.duration,
     this.steps = '',
+    this.titleLastStep,
     this.showSteps = true,
     this.closeIcon,
     this.nextTextStyle,
@@ -431,6 +433,7 @@ class _WidgetCardState extends State<WidgetCard> {
                                         widget.steps,
                                         widget.buttonOptions!.buttonTitle ??
                                             'Lanjut',
+                                        widget.titleLastStep,
                                       ),
                                       style: widget.nextTextStyle ??
                                           TextStyle(
@@ -533,10 +536,11 @@ class _WidgetCardState extends State<WidgetCard> {
     );
   }
 
-  String configureNextButton(String title, String defaultString) {
+  String configureNextButton(
+      String title, String defaultString, String? titleLastStep) {
     /* check if the step is in the last then
     change the copywrite */
-    if (title[0] == title[title.length - 1]) return 'Ok';
+    if (title[0] == title[title.length - 1]) return titleLastStep ?? 'Ok';
     return defaultString;
   }
 }

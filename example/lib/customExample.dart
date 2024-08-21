@@ -33,7 +33,7 @@ class _SimpleState extends State<customExample> {
                   width: 100,
                   child: Center(
                     child: Text(
-                      'Sorot aku kakak',
+                      'Sorot aku kakak 1',
                       textAlign: TextAlign.center,
                       style: TextStyle(color: Colors.white),
                     ),
@@ -103,7 +103,7 @@ class _SimpleState extends State<customExample> {
         initial: '4',
         child: FloatingActionButton(
           onPressed: () {
-            CoachMaker(
+            var coachMaker = CoachMaker(
               buildContext: context,
               onTapNext: (index) {
                 print('idx $index');
@@ -188,17 +188,19 @@ class _SimpleState extends State<customExample> {
               //     ],
               //   );
               // },
-              isActive: false,
-
+              isActive: true,
               buttonOptions: CoachButtonOptions(
                 skipTitle: 'Lewati',
                 buttonTitle: 'Lanjut',
+                titleLastStep: 'Selesai',
                 buttonStyle: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.green),
                   elevation: MaterialStateProperty.all(0),
                 ),
               ),
-            ).show();
+            );
+
+            coachMaker.show();
           },
           tooltip: 'Increment',
           child: Icon(Icons.add),
