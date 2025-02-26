@@ -371,9 +371,15 @@ class _WidgetCardState extends State<WidgetCard> {
                                         ),
                                   ),
                                   widget.closeIcon != null
-                                      ? GestureDetector(
-                                          onTap: widget.onSkip,
-                                          child: widget.closeIcon,
+                                      ? Semantics(
+                                          identifier: 'close-coach-mark',
+                                          button: true,
+                                          explicitChildNodes: true,
+                                          excludeSemantics: true,
+                                          child: GestureDetector(
+                                            onTap: widget.onSkip,
+                                            child: widget.closeIcon,
+                                          ),
                                         )
                                       : SizedBox(),
                                 ],
